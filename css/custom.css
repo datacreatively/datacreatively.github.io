@@ -1,0 +1,473 @@
+/* Your custom css code goes here */
+
+.probootstrap-section-full .probootstrap-image, .probootstrap-text{height:50vh;width:100%;-webkit-transition:.3s all ease;transition:.3s all ease}
+.probootstrap-section-full .probootstrap-image{
+    margin-top: 100px;
+    background-position:center center;background-repeat:no-repeat;background-size:cover;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+.box1{
+    width: 100%;
+    display: flex;
+    height: 46vh;
+    align-content: center}
+.box2{width: 100%;
+    display: flex;
+    align-content: flex-end}
+
+.probootstrap-header-article{
+    margin: auto;
+    width: 100%;
+    vertical-align: middle;
+    z-index:12;
+    text-align: center;
+    font-family:'Kaushan Script', cursive;
+    font-size: 60px;
+    font-weight:500;
+    color:#FFF;
+    text-shadow: 3px 3px 4px rgba(0,0,0,.5)
+}
+
+@media screen and (max-width:768px){
+    .probootstrap-header-article{
+        top: auto;
+        align-self: center;
+        padding: 15px;
+        margin: auto;
+        font-size: 45px}}
+
+.posted-on{
+    font-family: "Damion", cursive;
+    color: #fff;
+    text-align: end;
+    -webkit-align-self: flex-end;
+    align-self:flex-end;
+    margin: 0px;
+    margin-top: auto;
+    padding: 0px 10px;
+    z-index: 11;
+    width: 100%}
+
+/* circle from https://codepen.io/Jebeor/pen/VeyYEP */
+.circle {
+    position: relative;
+    align-self:flex-end;
+    display: inline-block;
+    background-size:cover;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    /* Just making it pretty */
+    @shadow: rgba(0, 0, 0, .5);
+    @shadow-length: 3px 3px 4px;
+    -webkit-box-shadow: 0 @shadow-length 0 0 @shadow;
+    box-shadow: 0 @shadow-length 0 0 @shadow
+}
+
+.probootstrap-section-full-25 .probootstrap-image, .probootstrap-text{height:25vh;width:100%;-webkit-transition:.3s all ease;transition:.3s all ease}
+.probootstrap-section-full-25 .probootstrap-image{
+    margin-top: 100px;
+    background-position:center center;background-repeat:no-repeat;background-size:cover}
+
+
+.probootstrap-logo-black{
+    float:left;
+    color:rgb(0,0,0,.7);
+    padding-left:0;
+    font-size:30px;
+    display:block;
+    font-weight:500}
+.probootstrap-logo-black:active,
+.probootstrap-logo-black:focus,
+.probootstrap-logo-black:hover{color:rgb(0,0,0,.75);text-decoration:none}
+@media screen and (max-width:768px){.probootstrap-logo-black{padding-left:0}}
+
+
+.social-media-buttons{
+    width: 100%;
+    display: inline-flex;
+    align-content: center;
+    justify-content:space-around;
+    padding: 30px
+}
+
+.social-media-buttons li a{
+    font-size: 30px
+}
+
+
+/*.probootstrap-article-image{
+    height: 100%; 
+    width: auto;
+    -webkit-transition:.3s all ease;
+    transition:.3s all ease;
+    background-position:center center;
+    background-repeat:no-repeat; 
+    background-size: cover;
+    object-fit: cover}
+
+figcaption{text-align: center; font-family: "Damion", cursive; color: rgba(0,0,0,.3)}*/
+
+
+
+ul.probootstrap-main-nav.text-right.probootstrap-social{
+    display: inline}
+
+pre.white{background-color:#fff /*#fcfcfc */ !important}
+pre.white code{background-color:#fff /*#fcfcfc */ !important; font-size: 13px}
+pre{
+    background-color:#f8f8f8 !important;
+    border: none !important;
+    /*box-shadow: 3px 3px 7px rgba(0,0,0,.2)*/}
+pre code{
+    font-family: 'Source Code Pro', monospace !important;
+    font-weight: 500;
+    display: inline;
+    padding: 0px;
+    text-align: left;
+    margin: 0px}
+code{
+    font-family: 'Source Code Pro', monospace !important;
+    font-weight: 500;
+    color:#444 !important;
+    background-color:#f8f8f8 !important;
+    font-size: 13px}
+code.white{background-color:#fff /*#fcfcfc */ !important}
+.code-num{color:#0063ae !important} /* numbers - blue */
+.code-com{color:#6b896f !important; /*#9ca9a3;*/
+    font-style: italic !important} /* comments - grey */
+.code-log{color:#fb7200 !important}     /* logical - orange */
+.code-quo{color:#db2c6a !important}    /* quotation - pink */
+.red{color:#ab2c2c}
+.bla{color:#000}
+.grn{color:#008947}
+.bold{font-weight: 900}
+.underlined{text-decoration: underline}
+.italic{font-style: italic}
+
+
+
+/* --------------------------- probootstrap-section-2-3rds ----------------------------- */
+
+.probootstrap-section-23 h1{text-align: center; text-transform: uppercase; margin: 40px auto 20px auto !important} 
+.probootstrap-section-23 h3{text-align: center; padding: 35px 0px 15px 0px}
+.probootstrap-section-23.probootstrap-oversec{padding: 100px 0px; background-color: #f6f6f6}
+.probootstrap-section-23.probootstrap-no-hover.probootstrap-reverse.probootstrap-oversec{
+    padding: 100px 0px; background-color: #fff !important}
+.flex,.probootstrap-section-23,.probootstrap-section-23 .probootstrap-text{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:horizontal;
+    -webkit-box-direction:normal;
+    -ms-flex-flow:row wrap;
+    flex-flow:row wrap;
+    width: 100%/*;
+    background-color: #f6f6f6*/}
+.probootstrap-section-23:last-child .probootstrap-text{border-bottom:none}
+.probootstrap-section-23 .probootstrap-image{
+    width: 30%;
+    -webkit-transition:.3s all ease;
+    transition:.3s all ease}
+.probootstrap-section-23 .probootstrap-text{
+    height:auto;
+    width:70%;
+    /* margin: 25px auto; */
+    -webkit-transition:.3s all ease;
+    transition:.3s all ease}
+.probootstrap-section-23 .probootstrap-image{
+    background-position: top left;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:right;
+    margin: 10px 0px}
+
+
+@media screen and (max-width:768px){
+    .probootstrap-section-23 .probootstrap-image,.probootstrap-section-23 .probootstrap-text{
+        height:auto;
+        padding:2em 0em;
+        width:100%}
+    .probootstrap-section-23 .probootstrap-image{
+        min-height:400px;
+        background-position: center;
+        width: 100%;
+        padding:0}
+    .probootstrap-section-23 .probootstrap-text .probootstrap-inner{padding: 0px 15px !important}}
+
+.probootstrap-section-23 .probootstrap-text{
+    /*border-bottom:1px solid #f2f2f2;*/
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:left;
+    margin: 0px;
+    padding: 0px}
+.probootstrap-section-23 .probootstrap-text>.probootstrap-inner{
+    -ms-flex-item-align: center;
+    align-self:flex-start;
+    width: 100%;
+    /*max-width:800px;*/
+    padding: 0px 75px;
+    margin-top: 0px}
+.probootstrap-section-23:focus .probootstrap-image,.probootstrap-section-23:hover .probootstrap-image{width:28%}
+
+@media screen and (max-width:768px){
+    .probootstrap-section-23:focus .probootstrap-image,.probootstrap-section-23:hover .probootstrap-image{width:100%}}
+
+.probootstrap-section-23:focus .probootstrap-text,.probootstrap-section-23:hover .probootstrap-text{width:72%}
+.probootstrap-section-23.probootstrap-reverse .probootstrap-image{
+    background-position:left;
+    background-size: contain;
+    -webkit-box-ordinal-group:2;
+    -ms-flex-order:2;
+    order:2}
+
+@media screen and (max-width:768px){
+    .probootstrap-section-23:focus .probootstrap-text,.probootstrap-section-23:hover .probootstrap-text{
+        width:100%;
+        -ms-flex-item-align: top;
+        position: fixed}
+    .probootstrap-section-23.probootstrap-reverse .probootstrap-image{
+        width: 100%;
+        background-position: center;
+        -webkit-box-ordinal-group:2;
+        -ms-flex-order:2;
+        order:2}}
+.probootstrap-section-23.probootstrap-reverse .probootstrap-text{
+    order:1;
+    -webkit-box-ordinal-group:1;
+    -ms-flex-order:1}
+.probootstrap-section-23.probootstrap-no-hover .probootstrap-image{width:30%!important}
+.probootstrap-section-23.probootstrap-no-hover .probootstrap-text{width:70%!important}
+
+@media screen and (max-width:768px){
+    .probootstrap-section-23.probootstrap-no-hover{
+        width: 100%;
+        vertical-align: top;
+        margin-top: 0px}
+    .probootstrap-section-23.probootstrap-reverse .probootstrap-text{
+        width: 100%;
+        -webkit-box-ordinal-group:1;
+        -ms-flex-order:1;
+        order:1}
+    .probootstrap-section-23.probootstrap-no-hover .probootstrap-image{
+        width:100%!important;
+        height: inherit;
+        -webkit-box-ordinal-group:2;
+        -ms-flex-order:2;
+        order:2}
+    .probootstrap-section-23.probootstrap-no-hover .probootstrap-text{
+        width:100%!important;
+        -webkit-box-ordinal-group:1;
+        -ms-flex-order:1;
+        order:1}
+    .probootstrap-form.{padding:20px}
+    .img-sm-responsive{max-width:100%}}
+
+
+
+/* --------------------------- probootstrap-section-texttext ----------------------------- */
+/* --------------------------- text 1 = wide, text 2 = narrow ----------------------------- */
+.probootstrap-section-tt .probootstrap-text-1> .probootstrap-inner, .probootstrap-section-tt .probootstrap-text-2> .probootstrap-inner{
+    -ms-flex-item-align: center;
+    align-self: center;
+    padding: 100px;
+    margin-top: 0px}
+.flex,.probootstrap-section-tt,.probootstrap-section-tt .probootstrap-text-1, .flex,.probootstrap-section-tt,.probootstrap-section-tt .probootstrap-text-2{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:horizontal;
+    -webkit-box-direction:normal;
+    -ms-flex-flow:row wrap;
+    flex-flow:row wrap;
+    width: 100%}
+.probootstrap-section-tt:last-child .probootstrap-text-1{border-bottom:none}
+.probootstrap-section-tt .probootstrap-text-1, .probootstrap-section-tt .probootstrap-text-2{
+    height:auto;
+    margin: 25px auto;
+    -webkit-transition:.3s all ease;
+    transition:.3s all ease}
+.probootstrap-section-tt .probootstrap-text-1{
+    width:70%}
+.probootstrap-section-tt .probootstrap-text-2{
+    width:30%}
+
+
+
+@media screen and (max-width:768px){
+    .probootstrap-section-tt .probootstrap-text-1,.probootstrap-section-tt .probootstrap-text-2{
+        height:auto;
+        padding:2em 0;
+        width:100%}
+
+.probootstrap-section-tt .probootstrap-text-1, .probootstrap-section-tt .probootstrap-text-2{
+    /*border-bottom:1px solid #f2f2f2;*/
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:left;
+    margin: 0px;}
+
+.probootstrap-section-tt:focus .probootstrap-text-2,.probootstrap-section-tt:hover .probootstrap-text-2{width:28%}
+
+@media screen and (max-width:768px){
+    .probootstrap-section-tt:focus .probootstrap-text-2,.probootstrap-section-tt:hover .probootstrap-text-2{width:100%}}
+
+.probootstrap-section-tt:focus .probootstrap-text-1,.probootstrap-section-tt:hover .probootstrap-text-1{width:72%}
+.probootstrap-section-tt.probootstrap-reverse .probootstrap-text-2{
+    -webkit-box-ordinal-group:2;
+    -ms-flex-order:2;
+    order:2}
+
+@media screen and (max-width:768px){
+    .probootstrap-section-tt:focus .probootstrap-text-1,.probootstrap-section-tt:hover .probootstrap-text-1{
+        width:100%;
+        -ms-flex-item-align: top;
+        position: fixed}
+    .probootstrap-section-tt.probootstrap-reverse .probootstrap-text-2{
+        width: 100%;
+        -webkit-box-ordinal-group:2;
+        -ms-flex-order:2;
+        order:2}}
+.probootstrap-section-tt.probootstrap-reverse .probootstrap-text-1{
+    order:1;
+    -webkit-box-ordinal-group:1;
+    -ms-flex-order:1}
+.probootstrap-section-tt.probootstrap-no-hover .probootstrap-text-1{width:70%!important}
+.probootstrap-section-tt.probootstrap-no-hover .probootstrap-text-2{width:30%!important}
+
+@media screen and (max-width:768px){
+    .probootstrap-section-tt.probootstrap-no-hover{
+        width: 100%;
+        vertical-align: top;
+        margin-top: 0px}
+    .probootstrap-section-tt.probootstrap-reverse .probootstrap-text-1{
+        width: 100%;
+        -webkit-box-ordinal-group:1;
+        -ms-flex-order:1;
+        order:1}
+    .probootstrap-section-tt.probootstrap-no-hover .probootstrap-text-2{
+        width:100%!important;
+        -webkit-box-ordinal-group:2;
+        -ms-flex-order:2;
+        order:2}
+    .probootstrap-section-tt.probootstrap-no-hover .probootstrap-text-1{
+        width:100%!important;
+        -webkit-box-ordinal-group:1;
+        -ms-flex-order:1;
+        order:1}
+    .probootstrap-form.{padding:20px}
+    .img-sm-responsive{max-width:100%}}
+
+
+
+
+
+
+
+.probootstrap-intext-half{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:horizontal;
+    -webkit-box-direction:normal;
+    -ms-flex-flow:row wrap;
+    flex-flow:row wrap}
+.probootstrap-intext-half:last-child .probootstrap-text{border-bottom:none}
+.probootstrap-intext-half .probootstrap-image,.probootstrap-intext-half .probootstrap-text{
+    height:40vh;
+    width:50%;
+    -webkit-transition:.3s all ease;
+    transition:.3s all ease}
+.probootstrap-intext-half .probootstrap-image{
+    background-position: top left;
+    background-repeat:no-repeat;
+    background-size:cover}
+@media screen and (max-width:768px){
+    .probootstrap-intext-half .probootstrap-image,.probootstrap-intext-half .probootstrap-text{
+        height:inherit;
+        padding:2em 0;
+        width:100% !important}
+    .probootstrap-intext-half .probootstrap-image{
+        height:400px;
+        padding:0}}
+.probootstrap-intext-half .probootstrap-text{
+    border-bottom:1px solid #fff;
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:center}
+.probootstrap-intext-half .probootstrap-text>.probootstrap-inner{
+    -ms-flex-item-align:center;
+    align-self:center;
+    max-width:600px;
+    padding: 10px 0px 10px 15px;
+    margin-top: 0px}
+.probootstrap-intext-half:focus .probootstrap-image,.probootstrap-intext-half:hover .probootstrap-image{width:48%}
+@media screen and (max-width:768px){
+    .probootstrap-intext-half:focus .probootstrap-image,.probootstrap-intext-half:hover .probootstrap-image{width:100% !important}}
+.probootstrap-intext-half:focus .probootstrap-text,.probootstrap-intext-half:hover .probootstrap-text{width:52%}
+.probootstrap-intext-half.probootstrap-reverse .probootstrap-image{
+    -webkit-box-ordinal-group:3;
+    -ms-flex-order:2;
+    order:2}
+@media screen and (max-width:768px){
+    .probootstrap-intext-half:focus .probootstrap-text,.probootstrap-intext-half:hover .probootstrap-text{width:100%}
+    .probootstrap-intext-half.probootstrap-reverse .probootstrap-image{
+        -webkit-box-ordinal-group:2;
+        -ms-flex-order:1;
+        order:1}}
+.probootstrap-intext-half.probootstrap-reverse .probootstrap-text{
+    -webkit-box-ordinal-group:2;
+    -ms-flex-order:1;
+    order:1}
+.probootstrap-intext-half.probootstrap-reverse .probootstrap-text>.probootstrap-inner{
+    padding: 10px 10px 10px 0px}
+.probootstrap-intext-half.probootstrap-no-hover .probootstrap-image,.probootstrap-intext-half.probootstrap-no-hover .probootstrap-text{width:50%!important}
+
+
+
+
+
+
+
+/* ---------------------------  ----------------------------- */
+
+
+footer a{
+    -webkit-transition:.3s all;
+    transition:.3s all;
+    color:#c79c0f;
+    text-decoration: none !important}
+a{text-decoration: none !important}
+.form-group label{margin: 0px; font-size: 14px}
+
+div .probootstrap-form .form-group{margin: 5px 0}
+div .form-group input#submit.btn.btn-primary{margin: 10px 0 0 0}
+textarea#message.form-control{height: 85px !important}
+
+@media screen and (max-width:768px){
+    .probootstrap-logo{padding-left:0}
+    .probootstrap-inner.probootstrap-animate{margin-top: 0px !important}
+}
+    
+
+
+
+
+
+ul{list-style-type: square}
+
+
+div.btn-centered{
+    text-align: center
+}
+
+.probootstrap-inner{
+    -ms-flex-item-align:center;
+    align-self:center;
+    padding: 0px 10px 0px 10px}
+
+

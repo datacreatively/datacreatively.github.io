@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>martinamokosova | projects | uk map</title>
+    <meta name="description" content="Data . . . creatively">
+    <meta name="keywords" content="projects about data and visualisation">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Kaushan+Script|Mrs+Sheppards|Damion|Source+Code+Pro:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/vendor/icomoon.css">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149158680-1"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          
+          gtag('config', 'UA-149158680-1');
+      </script> 
+      
+  </head>
+
+
+  <!------------------------------------ START: header --------------------------------------->  
+  <body>
+  <div class="probootstrap-loader"></div>
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+        <a href="index.html" class="probootstrap-logo-black">martinamokosova</a>
+        <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="active"><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="links.html">Links</a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+            <ul class="probootstrap-mobile-menu-active text-right probootstrap-social">
+              <li><a href="https://www.facebook.com/martina.mokosova" target="_blank"><i class="icon-facebook2"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/martina-mokosova/" target="_blank"><i class="icon-linkedin"></i></a></li>
+              <li><a href="https://github.com/martinamokosova" target="_blank"><i class="icon-github2"></i></a></li>
+          </ul>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+
+  <!------------------------------------ START: main --------------------------------------->
+  <div class="probootstrap-main" style="margin-bottom: 30px">
+    <section class="probootstrap-section-full probootstrap-no-hover">
+        <div class="probootstrap-image" style="background-image: url(img/general/andrew-stutesman-l68Z6eF2peA.jpg)">
+            <div class="box1">
+                <h1 class="probootstrap-header-article">Creating an earthquake map of the United Kingdom with<span>&#160;</span>R<br>PART 1</h1></div>
+            <div class="box2">
+                <p class="posted-on">September 2019</p></div>
+        </div>
+    </section>
+  </div>
+
+<!---------------------------------- INTRO ---------------------------------->
+
+<div class="probootstrap-main">
+    <section class="probootstrap-section probootstrap-animate">
+        <div class="container">
+            <h1 style="text-align: center">Purpose of the project</h1><hr>
+            <p>The purpose of this project is to create an earthquake map of the United Kingdom (UK) by using data visualisation tools in R. The project starts with a data collection, continues with a data transformation to a format suitable for plotting and finishes with the data visualisation. The final map contains the UK territory map split into regions (the background map), and the earthquakes, including their location, magnitude and depth. The resulting map aims to show possible regional seismic patterns.</p>
+            <!-- <p>There are additional features added to the map and described <a href="uk-map-2.html">here</a>.</p>-->
+        </div>
+    </section>
+    <section class="probootstrap-section probootstrap-animate">
+        <div class="container">
+            <h1 style="text-align: center">The tools selection</h1><hr>
+            <p>Among the different options, R was selected for this project due to the following reasons:</p> 
+            <ul style="list-style-type:square">
+                <li>availability - R is a freely available open-source language,</li>
+                <li>ease of use - R is supported by a large online community offering help with questions and tutorials, </li>
+                <li>flexibility - R offers much flexibility thanks to the big package database, which is constantly increasing.</li>
+            </ul>
+        </div>
+    </section>
+    <section class="probootstrap-section probootstrap-animate TOC">
+        <div class="container">
+            <h1 style="text-align: center">The process</h1><hr>
+            <p>This project involves the process of creating the UK earthquake map and the seismic pattern analysis. It consists of the following steps described in the text below:</p>
+            <ol>
+                <li><a href="#STEP1" class="js-next">Data collection</a></li>
+                <li><a href="#STEP2" class="js-next">Data transformation and cleaning</a></li>
+                <li><a href="#STEP3" class="js-next">Data visualisation</a></li>
+                <li><a href="#STEP4" class="js-next">Results interpretation</a></li>
+            </ol>
+        </div>
+    </section>
+
+    
+<!--------------------------------------------- PART 1 ---------------------------------------------->
+ 
+    <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-oversec probootstrap-animate" data-animate-effect="fade-In">
+        <section id="STEP1" class="probootstrap-section-23 probootstrap-no-hover">
+            <div class="probootstrap-image hidden-xs" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h1 style="text-align: center"><a href="#TOC" class="js-next">STEP 1. Data collection</a></h1><hr>
+                    <p>Creation of the earthquake map requires data for the background map (the territory) and the earthquake data. The background map helps the reader to identify in which part of the territory is earthquake epicentre located, whilst the earthquake data include earthquake geo-coordinates, magnitude and depth.</p>
+                    <h3>a) The background map</h3>
+                    <p>The background map data contain geo-coordinates of all the points that by joining together form a territory border (thus creating one or more spatial polygons). These data are called spatial data. One of the common formats of spatial data is a shapefile, which is an object consisting of all polygons forming a given territory.<br>
+                    Data for this project should cover the entire UK territory, and preferably include regional administrative boundaries. As the UK is surrounded by other countries (despite it's separated from most of them by the sea), the final map would be visually incomplete without including a part of the neighbouring countries in the final plot. Due to these constraints, the final data comprise entire Europe and later in the process, only the UK and the surrounding area are kept.</p>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/1-1_eurostat.PNG" class="probootstrap-image" style="background-image: url(img/01-uk-map/1-1_eurostat.PNG)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>To tick all the boxes, the most suitable database for this purpose is the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts" target="_blank">Eurostat</a>. There are multiple options of detail to choose from (from the most detailed scale 1:1 million to the largest scale 1:60 million), different release dates (the latest release was March 2019) and various choices for the data format. This project uses the NUTS 2016 shapefile (SHP) at a 1:1 million scale.</p>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/1-2_zip.PNG" class="probootstrap-image" style="background-image: url(img/01-uk-map/1-2_zip.PNG)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The downloaded file reveals more options. There are groups of five files with the same four-digit code representing the coordinate system at several NUTS levels. NUTS (Nomenclature of Territorial Units for Statistics) differentiates the spatial data at a diverse level of aggregation. While NUTS 0 outlines the countries as a whole, NUTS 1, 2 and 3 distinguish between smaller territorial units. This project uses NUTS_RG_01M_2016_4326_LEVL_1 dataset. After determining the most relevant data for the project, the selected file then has to be copied to the working directory for later use.</p>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <div class="probootstrap-image hidden-xs" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h3>b) The earthquake data</h3>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/1-3_bgs.PNG" class="probootstrap-image" style="background-image: url(img/01-uk-map/1-3_bgs1.PNG)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">                
+                    <p>The earthquake data are from the <a href="https://earthquakes.bgs.ac.uk/earthquakes/dataSearch.html" target="_blank">British Geological Survey (BGS)</a> website allowing for search for the required information. The search can be rectangular or circular where the latitude ranges between 49 to 63 degrees and the longitude range covers -12 to 5 degrees, and BGS also offers a possibility to limit the results to a specific date range. Optional criteria help to refine the search by depth, magnitude and number of stations if necessary. The output has the form of a list of comma separated values (CSV) and can be copied to a text file in the working directory. The earthquake database of this project contains the entire earthquake history recorded by BGS and covers the maximum territory available (based on rectangular search). The selected data will be refined in the second step of the project.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    
+    
+ <!--------------------------------------------- PART 2 ---------------------------------------------->
+    <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse probootstrap-oversec probootstrap-animate" data-animate-effect="fade-In">
+        <section id="STEP2" class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <div class="probootstrap-image hidden-xs" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h1>STEP 2. Data transformation and cleaning</h1><hr>
+                    <p>The purpose of data transformation is to prepare the data to a format adequate for plotting. This step describes the process from loading the data into RStudio, viewing the data to better understand the included information, cleaning the data from missing and unnecessary values and transforming variable.</p>
+                    <h3>a) The background map</h3>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <div class="probootstrap-image hidden-xs" data-animate-effect="fadeIn" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The background map data has a form of a shapefile and therefore requires <code>readOGR()</code> function from <code>rgdal</code> package for uploading into RStudio. The data are loaded into variable eumap and can be viewed by using either <code>View()</code> or <code>glimpse()</code> function.</p>
+<!------------ CODE ----------------------------->
+                    <pre>
+<code><code class="code-log">library</code>(rgdal)
+
+eumap <- readOGR(dsn = <code class="code-quo">"D:\\R\\seismicitymap"</code>, layer = <code class="code-quo">"NUTS_RG_01M_2016_4326_LEVL_1"</code>)
+
+View(eumap)
+glimpse(eumap)</code></pre>    
+<!-- end of CODE -->
+<br>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <a href="img/01-uk-map/2-1_View_eumap.PNG" class="probootstrap-image"  data-animate-effect="fadeIn" style="background-image: url(img/01-uk-map/2-1_View_eumap.PNG)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>Variable eumap in which the spatial data was loaded is a <code>SpatialPolygonDataFrame</code> class and it is a list including the following components:
+                        <ul style="list-style-type: square">
+                            <li>@data - a data frame containing basic information about the polygons,</li>
+                            <li>@polygons - a list of all polygons,</li>
+                            <li>@plotOrder - an integer,</li> 
+                            <li>@bbox - a matrix - and</li>
+                            <li>@proj4string - a CRS file.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <div class="probootstrap-image hidden-xs"  data-animate-effect="fadeIn" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The loaded map data are capable of describing the shape and the location of the spatial polygons (the European regions) and also contain information about their names. Consequently, the polygon names can be included in the final map to label the UK regions, however, the data have to be prepared first. As each label should be displayed in the centre of its polygon, it's important to find the polygon centroids. These are created by using <code>gCentroid()</code> function from <code>rgeos</code> package and assigned to c_eumap variable. Unfortunately, c_eumap only contains the latitude and longitude of the centroids and doesn't include the polygon names or ids. Luckily the id information can be extracted from the row number into a new column id, through which the centroids can be linked back to the main table a few steps later and thus connect with the polygon names.</p>
+<!------------ CODE ----------------------------->
+                    <pre>
+<code><code class="code-log">library</code>(rgeos)
+
+c_eumap <- as.data.frame(gCentroid(eumap, byid = <code class="code-log">TRUE</code>))
+c_eumap$id <- rownames(c_eumap)
+names(c_eumap) <- c(<code class="code-quo">"c_long"</code>, <code class="code-quo">"c_lat"</code>, <code class="code-quo">"id"</code>)</code></pre>    
+<!-- end of CODE -->
+<br>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <a href="img/01-uk-map/2-4_eumap_df.PNG" class="probootstrap-image"  data-animate-effect="fadeIn" style="background-image:url(img/01-uk-map/2-4_eumap_df.PNG)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>Whilst <code>SpatialPolygonDataFrame</code> can be already used for plotting, a better approach is to first transform it into <code>data.frame</code> by using <code>fortify()</code> function. It's important to note that during this process, part of the information from the @data component (including "LEVL_CODE", "NUTS_ID", "CNTR_CODE", "NUTS_NAME" and "FID") is lost. To overcome it, this information can be added back to the data frame after applying the fortify() function by joining through the "id" column. At the same time, the polygon centroids can join the newly created data frame.</p>
+<!------------ CODE ----------------------------->
+                    <pre>
+<code>eumap@data$id <- rownames(eumap@data)
+eumap_df <- fortify(eumap)
+eumap_df <- join(eumap_df, eumap@data, by=<span class="code-quo">"id"</span>)
+eumap_df <- join(eumap_df, c_eumap, by=<span class="code-quo">"id"</span>)</code></pre>
+<!-- end of CODE -->
+            
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <div class="probootstrap-image hidden-xs"  data-animate-effect="fadeIn"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The next step is to filter The UK area (including parts of neighbouring countries) from the eumap_df table by limiting the longitude and latitude values. The result is stored in variable <code>northwestmap</code>. Further, the UK can be separated from its neighbours by applying a filter on "CNTR_CODE" variable, which results in two new datasets <code>ukmap</code> and <code>nwmap</code>. Thanks to their separation, these regions can be displayed on the final map differently.</p>
+<!------------ CODE ----------------------------->
+                    <pre>
+<code>northwestmap <- eumap_df[eumap_df$long > <span class="code-num">-9</span> & eumap_df$long < <span class="code-num">3</span> & eumap_df$lat > <span class="code-num">49</span> & eumap_df$lat < <span class="code-num">60</span>, ]
+ukmap <- northwestmap[northwestmap$CNTR_CODE == <span class="code-quo">"UK"</span>, ]
+nwmap <- northwestmap[northwestmap$CNTR_CODE != <span class="code-quo">"UK"</span>, ]</code></pre>    
+<!-- end of CODE -->
+                    
+                    <p>The last part of background map data transformation is to style the polygon labels. By default, the region names are in uppercase and all in one line. To improve their appearance on the plot, the font is changed to title case (only the first letter of each word is capitalised) and the text is wrapped into multiple lines. These operations can be done by using <code>str_to_title</code> and <code>str_wrap</code> functions from <code>stringr()</code> package (included in tidyverse).</p>
+<!------------ CODE ----------------------------->
+                    <pre>
+<code><span class="code-log">library</span>(tidyverse)
+
+ukmap$nuts_name_w <- str_to_title(ukmap$NUTS_NAME)
+ukmap$nuts_name_w <- str_wrap(ukmap$nuts_name_w, <span class="code-num">10</span>)</code></pre>    
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <div class="probootstrap-image hidden-xs" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h3>b) The earthquake data</h3>
+                    <p>The earthquake data are loaded into RStudio by <code>read.csv()</code> function from the base R. The loaded data has a <code>data.frame</code> format and contains date and time of the earthquake, location coordinates (longitude and latitude), depth, magnitude and other variables.</p>
+<!------------ CODE ----------------------------->
+                    <pre>
+<code>earthquakes <- read.csv(<span class="code-quo">"earthquakes.txt"</span>, stringsAsFactors=<span class="code-log">FALSE</span>)
+View(earthquakes)</code></pre>    
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <a href="" class="probootstrap-image" style="background-image"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The table also contains a lot of <code>NA</code> values. The final map requires only information about location, depth and magnitude, so the other columns can be removed. The cleaned table is stored in <code>eq</code> variable.<br>
+                    The earthquake data should then be limited to the same longitude and latitude as the background map. If all locations were kept, the data would be displayed even behind the desired map area, where the background map doesn't exist. The next step is to sort the magnitude to an ascending order to overlay the highest values over the small values on the plot, which makes the biggest earthquakes the most visible.</p>
+                
+<!------------ CODE ----------------------------->
+                    <pre>
+<code>eq <- na.omit(earthquakes[earthquakes$ML>=<span class="code-num">0</span>, c(<span class="code-num">1</span>:<span class="code-num">6</span>)])
+eq <- eq[eq$long > <span class="code-num">-9</span> & eq$long < <span class="code-num">3</span> & eq$lat > <span class="code-num">49</span> & eq$lat < <span class="code-num">60</span>, ]
+eq <- eq[order(eq$ML),]</code></pre>    
+<!-- end of CODE -->
+
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <div class="probootstrap-image hidden-xs" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>After the first cleaning, the earthquake data are explored through <code>View()</code>, <code>min()</code> and <code>max()</code> functions. The surprising discovery shows that minimum "ML", commonly referred to as "Richter magnitude", is a negative value. These negative values occur due to the calculation of "ML" magnitude and mean a very small earthquake that is not felt by humans, therefore these values don't have to be considered in the final map. The highest "ML" has a value of 6.1.</p>
+<!------------ CODE ----------------------------->
+                    <pre>
+<code>min(eq$ML)
+max(eq$ML)
+View(eq)</code></pre>    
+<!-- end of CODE -->
+                    <p>When the range of magnitude values is known, they can be divided into multiple groups to show their distribution. The categories are stored in a new column "ML2" by using <code>case_when()</code> function from <code>dplyr</code> package (included in tidyverse, which was loaded earlier).</p>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <a href="img/01-uk-map/2-6_eq_distribution.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/2-6_eq_distribution.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+<!------------ CODE ----------------------------->
+                    <pre>
+<code>eq$ML2 <- case_when(
+  eq$ML >= <span class="code-num">6</span> ~ <span class="code-quo">"6.0 and above"</span>,
+  eq$ML >= <span class="code-num">5</span> ~ <span class="code-quo">"5.0 - 5.9"</span>,
+  eq$ML >= <span class="code-num">4</span> ~ <span class="code-quo">"4.0 - 4.9"</span>,
+  eq$ML >= <span class="code-num">3</span> ~ <span class="code-quo">"3.0 - 3.9"</span>,
+  eq$ML >= <span class="code-num">2</span> ~ <span class="code-quo">"2.0 - 2.9"</span>,
+  eq$ML >= <span class="code-num">1</span> ~ <span class="code-quo">"1.0 - 1.9"</span>,
+  eq$ML >= <span class="code-num">0</span> ~ <span class="code-quo">"0.0 - 0.9"</span>
+)</code></pre>
+<!-- end of CODE -->
+                    <p>The magnitude distribution can be visualised via a bar chart. As seen from the chart, the number of earthquakes with a magnitude between 0 to 1 and 1 to 2 is significantly higher than the rest. Whilst this already shows low seismicity in the UK region, it's important to note that earthquakes with such low magnitudes are not felt, or felt rarely by humans and are only recorded by seismographs. Therefore it's not worth including this data in the final map.</p>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <div class="probootstrap-image hidden-xs" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The "ML2" variable is therefore recreated without the low magnitude values. Magnitude that doesn't match the required ranges gets the ML2 equal to <code>NA</code>. All records with NAs in "ML2" are then removed from the dataset which is the final step of the data transformation.</p>   
+<!------------ CODE ----------------------------->
+                    <pre>
+<code>eq$ML2 <- case_when(
+  eq$ML >= <span class="code-num">6</span> ~ <span class="code-quo">"6.0 and above"</span>,
+  eq$ML >= <span class="code-num">5</span> ~ <span class="code-quo">"5.0 - 5.9"</span>,
+  eq$ML >= <span class="code-num">4</span> ~ <span class="code-quo">"4.0 - 4.9"</span>,
+  eq$ML >= <span class="code-num">3</span> ~ <span class="code-quo">"3.0 - 3.9"</span>,
+  eq$ML >= <span class="code-num">2</span> ~ <span class="code-quo">"2.0 - 2.9"</span>
+)
+eq <- eq[!is.na(eq$ML2),]</code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+ <!--------------------------------------------- PART 3 ---------------------------------------------->
+    
+    <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-oversec probootstrap-animate" data-animate-effect="fade-In">
+        <section id="STEP3" class="probootstrap-section-23 probootstrap-no-hover">
+            <div class="probootstrap-image hidden-xs" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h1>STEP 3. Data visualisation</h1><hr>
+                    <p>After transformation and cleaning, the data are prepared for visualisation. For this project, the data visualisation is done by using the <code class="white">ggplot2</code> package. ggplot2 is a part of tidyverse package and it's loaded earlier in the data transformation step. ggplot considers the requested data order in which they occur in the code and plots them in layers. The basic function starts with <code class="white">ggolot()</code> function and then each new layer is added by <code class="white">+</code> sign. The visualisation thus takes two parts. In the first part, the background map is created and stored in variable <code class="white">uk_base</code>. In the second part, the earthquakes are added to the uk_base map. As these are included after the background map is created, the earthquake layer appears on the top over the background map layer.</p>
+                    <h3>a) The background map</h3>
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p1.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p1t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The polygon data forming the background map are plotted by <code class="white">geom_polygon()</code> function. The function asks for which dataset to plot (in this case nwmap and ukmap) and for aesthetics. Aesthetics in ggplot must usually contain either the x-axis, y-axis or both (depending on the type of graph), and can also reflect additional preferences (such as colour, shape, size, transparency...) to help differentiate between groups of data. The geom_polygon() function requires the specification of <code class="white">x</code>, <code class="white">y</code> and <code class="white">group</code> aesthetics. In case of creating maps, the x-axis is assigned to longitude, y-axis is latitude and group is assigned to group (representing the polygons).</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>ggplot() + geom_polygon(data=nwmap, aes(x = long, y=lat, group=group)) +
+  geom_polygon(data=ukmap, aes(x = long, y=lat, group=group))</code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p2.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p2t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The created map, however, is too wide. There are multiple ways to fix the problem. Functions <code class="white">coord_map()</code> from <code class="white">mapproj</code> package and <code class="white">coord_quickmap()</code> are designed to project a portion of the earth on a flat surface. Coord_map does not preserve straight lines and its computationally more expensive. Its advantage is the possibility to use various kinds of projection and orientation settings. Coord_quickmap uses aspect ratio approximation but its much faster than coord_map. Adding either function to the code fixes the aspect ratio of the final plot.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>ggplot() + geom_polygon(data=nwmap, aes(x = long, y=lat, group=group)) +
+  geom_polygon(data=ukmap, aes(x = long, y=lat, group=group)) <span class="bold">+
+  coord_quickmap()</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p4.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p4t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>By adding another aesthetic <code class="white">fill</code> to the code, the UK administrative regions are differentiated by their fill colour. The white border around the polygons is added to display the differences even clearer by adding <code class="white">colour="white"</code> in geom_polygon. This line of code doesn't go to the aesthetics as it's the same white border for all polygons. The white background with black frame and light grey gridlines represents one of the ggplot existing themes <code class="white">theme_bw</code>. ggplot offers many more themes to choose from.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>ggplot() + geom_polygon(data=nwmap, aes(x = long, y=lat, group=group)) +
+  geom_polygon(data=ukmap, aes(x = long, y=lat, group=group<span class="bold">, fill=NUTS_ID</span>), <span class="bold">colour=<span class="code-quo">"white"</span></span>) +
+  coord_quickmap() <span class="bold">+
+  theme_bw()</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p5.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p5t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The colour in data visualisation plays an important role as it can help to identify the critical information on the plot. Whilst the intention is to distinguish between the UK regions, the major message in this project is to visualise the earthquakes. The colour of anything else on the map should, therefore, be tamed to subtle tones of light grey. The fill colour of the administrative regions is set to shades of grey by using the <code class="white">scale_fill_grey()</code> function, and the <code class="white">fill</code> of the non-UK countries is set to pale grey. The legend for the fill of the NUTS regions is not important here as the region labels will be added later, and can be removed by using <code class="white">guides()</code> function.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>ggplot() + geom_polygon(data=nwmap, aes(x = long, y=lat, group=group), <span class="bold">fill=<span class="code-quo">"#eeeeee"</span></span>) +
+  geom_polygon(data=ukmap, aes(x = long, y=lat, group=group, fill=NUTS_ID), colour=<span class="code-quo">"white"</span>) +
+  coord_quickmap() +
+  theme_bw() <span class="bold">+
+  scale_fill_grey(start = <span class="code-num">0.8</span>, end = <span class="code-num">0.7</span>) +
+  guides(fill=<span class="code-log">FALSE</span>)</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p6.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p6t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>When creating a plot with ggplot, the plotting area has padding around (5% is a default value for a continuous scale). This empty space can look disturbing when plotting maps. To remove the padding, the <code class="white">scales</code> x and y can be positioned by setting <code class="white">expand</code> argument to 0,0.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>ggplot() + geom_polygon(data=nwmap, aes(x = long, y=lat, group=group), fill=<span class="code-quo">"#eeeeee"</span>) +
+  geom_polygon(data=ukmap, aes(x = long, y=lat, group=group, fill=NUTS_ID), colour=<span class="code-quo">"white"</span>) +
+  coord_quickmap() +
+  theme_bw() +
+  scale_fill_grey(start = <span class="code-num">0.8</span>, end = <span class="code-num">0.7</span>) +
+  guides(fill=<span class="code-log">FALSE</span>) <span class="bold">+
+  scale_y_continuous(expand=c(<span class="code-num">0</span>,<span class="code-num">0</span>)) +
+  scale_x_continuous(expand=c(<span class="code-num">0</span>,<span class="code-num">0</span>))</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p7.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p7t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>Scale function offers more options. <code class="white">breaks</code> argument allows to set values of the x-axis to a range between -8 to 2 with a step 2 and y-axis is set to range 49 to 60 with step 1. These values define the new positions for the major gridlines. Another feature of scales is the possibility to add a secondary axis through <code class="white">sec.axis</code> argument. The axis is based on the primary axis and can be its multiplication, addition or simply a duplicate.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>ggplot() + geom_polygon(data=nwmap, aes(x = long, y=lat, group=group), fill=<span class="code-quo">"#eeeeee"</span>) +
+  geom_polygon(data=ukmap, aes(x = long, y=lat, group=group, fill=NUTS_ID), colour=<span class="code-quo">"white"</span>) +
+  coord_quickmap() +
+  theme_bw() +
+  scale_fill_grey(start = <span class="code-num">0.8</span>, end = <span class="code-num">0.7</span>) +
+  guides(fill=<span class="code-log">FALSE</span>) +
+  scale_y_continuous(expand=c(<span class="code-num">0</span>,<span class="code-num">0</span>)<span class="bold">, breaks = seq(<span class="code-num">49</span>,<span class="code-num">60</span>,<span class="code-num">1</span>), sec.axis = dup_axis()</span>) +
+  scale_x_continuous(expand=c(<span class="code-num">0</span>,<span class="code-num">0</span>)<span class="bold">, breaks = seq(<span class="code-num">-8</span>,<span class="code-num">2</span>,<span class="code-num">2</span>), sec.axis = dup_axis()</span>)</code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p8.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p8t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>One of the last adjustments to the background map is the replacement of x and y value <code class="white">labels</code> by creating label vectors "x_labels" and "y_labels". It's important to note that the length of the labels vector and the breaks must match. At the same time, the axis titles are removed by setting the <code class="white">xlab</code> and <code class="white">ylab</code> to an empty string. By using the <code class="white">theme</code> function, further modifications can be made. <code class="white">element_line()</code> function sets the major grid lines to a lighter colour and thinner line. The minor gridlines and axis ticks are removed entirely by setting to <code class="white">element_blank()</code>.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code><span class="bold">x_labels <- c(<span class="code-quo">"8°W"</span>, <span class="code-quo">"6°W"</span>, <span class="code-quo">"4°W"</span>, <span class="code-quo">"2°W"</span>, <span class="code-quo">"0°"</span>, <span class="code-quo">"2°E"</span>)
+y_labels <- c(<span class="code-quo">"49°N"</span>, <span class="code-quo">"50°N"</span>, <span class="code-quo">"51°N"</span>, <span class="code-quo">"52°N"</span>, <span class="code-quo">"53°N"</span>, <span class="code-quo">"54°N"</span>, <span class="code-quo">"55°N"</span>, <span class="code-quo">"56°N"</span>, <span class="code-quo">"57°N"</span>, <span class="code-quo">"58°N"</span>, <span class="code-quo">"59°N"</span>, <span class="code-quo">"60°N"</span>)</span>
+
+uk_base <- ggplot() + geom_polygon(data=nwmap, aes(x = long, y=lat, group=group), fill=<span class="code-quo">"#eeeeee"</span>) +
+  geom_polygon(data=ukmap, aes(x = long, y=lat, group=group, fill=NUTS_ID), colour=<span class="code-quo">"white"</span>) +
+  coord_quickmap() +
+  theme_bw() +
+  scale_fill_grey(start = <span class="code-num">0.8</span>, end = <span class="code-num">0.7</span>) +
+  guides(fill=<span class="code-log">FALSE</span>) +
+  scale_y_continuous(expand=c(<span class="code-num">0</span>,<span class="code-num">0</span>), breaks = seq(<span class="code-num">49</span>,<span class="code-num">60</span>,<span class="code-num">1</span>), <span class="bold">labels = y_labels,</span> sec.axis = dup_axis()) +
+  scale_x_continuous(expand=c(<span class="code-num">0</span>,<span class="code-num">0</span>), breaks = seq(<span class="code-num">-8</span>,<span class="code-num">2</span>,<span class="code-num">2</span>), <span class="bold">labels = x_labels,</span> sec.axis = dup_axis()) <span class="bold">+
+  theme(panel.grid = element_line(colour = <span class="code-quo">"#f2f2f2"</span>, size = <span class="code-num">.1</span>),
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_blank()) +
+  xlab(<span class="code-quo">""</span>) + ylab(<span class="code-quo">""</span>)</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>  
+        
+
+
+
+<!--........................  part b (earthquake data)  ................................-->
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <div class="probootstrap-image" style="background-image: url()"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h3>b) The earthquakes</h3>
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p9.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p9t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The earthquakes are added to the background map as a set of points by using <code class="white">geom_point()</code> function. The <code class="white">data</code> is the "eq" dataset (excluding earthquakes with unknown depth). The geo-coordinates assigned to <code class="white">x</code> and <code class="white">y</code> defined in the aesthetics represent the point locations on the plot and the earthquake magnitude is displayed through the point <code class="white">size</code>. The depth is visualised through <code class="white">colour</code>. The bigger and darker points mean larger magnitude and shallower earthquake.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>uk_base + geom_point(data = eq[!is.na(eq$depth),], 
+                     aes(x = long, y = lat, size = ML2, colour = depth))</code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p10.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p10t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>Despite the different magnitude sizes and depth colours, it's difficult to discriminate between bigger/smaller and deeper/shallower earthquakes. To differentiate the magnitude better, the points get a second aesthetic <code class="white">alpha</code> to set their transparency according to the "ML2" value. The point sizes are also set manually by <code class="white">scale_size_manual()</code> to enhance the magnitude diversity on the plot. The depth colour scale is changed by using a Viridis colour pallette. Viridis pallettes in ggplot offer sets of beautiful series of colours that are designed to be colourblind effective and to distinguish well even when printed in black and white.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>uk_base + geom_point(data = eq[!is.na(eq$depth),], 
+                     aes(x = long, y = lat, size = ML2, colour = depth<span class="bold">, alpha=ML2</span>)) <span class="bold">+
+  scale_color_viridis_c(option = <span class="code-quo">"inferno"</span>) +
+  scale_size_manual(values = c(<span class="code-num">1</span>,<span class="code-num">2.25</span>,<span class="code-num">3.5</span>,<span class="code-num">4.75</span>,<span class="code-num">6</span>))</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p11.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p11t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The transparency of the smallest points on the map makes them nearly unnoticeable. To change that, the alpha aesthetic can also be set to manual via <code class="white">scale_alpha_manual()</code> and its values range between 0 to 1, where 0 means fully transparent and 1 means fully opaque. The added vector defines alpha values for each category. The legend also displays the depth through a colour bar where the maximum depth is on the top of the bar and the minimum depth is on the bottom. While this is the default setting, it seems more reasonable to display the deeper values on the bottom rather than on the top. The colour bar order can, therefore, be reversed in the <code class="white">guide</code> argument of the scales function. Finally, the legend instances get a label more understandable for the interested reader, instead of the default variable name, through <code class="white">name</code> argument (also in the scales function).</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>uk_base + geom_point(data = eq[!is.na(eq$depth),], 
+                     aes(x = long, y = lat, size = ML2, colour = depth, alpha=ML2)) +
+  scale_color_viridis_c(option = <span class="code-quo">"inferno"</span><span class="bold">, name = <span class="code-quo">"Depth (km)"</span>, 
+                        guide = guide_colourbar(reverse = <span class="code-log">TRUE</span>)</span>) +
+  scale_size_manual(values = c(<span class="code-num">1</span>,<span class="code-num">2.25</span>,<span class="code-num">3.5</span>,<span class="code-num">4.75</span>,<span class="code-num">6</span>)<span class="bold">, name = <span class="code-quo">"Magnitude (ML)"</span></span>) <span class="bold">+
+  scale_alpha_manual(values = c(<span class="code-num">.3</span>, <span class="code-num">.45</span>, <span class="code-num">.6</span>, <span class="code-num">.75</span>, <span class="code-num">.9</span>))</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p11_5.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p11_5t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>Guide argument in scales functions allows for even more options. One of them is changing the order of guides in the legend, where assigning a lower value to the <code class="white">order</code> argument brings the legend guide to the earliest position. Therefore colour scale used for depth gets in the second place and size scale used for the magnitude gets in the first place in the legend. The guide can also be entirely removed by assigning its value to "none". Other legend properties can be adapted in the <code class="white">theme</code> function. Text used in the legend (and its size, font, ...) is changed via <code class="white">element_text()</code> in <code class="white">legend.title</code> argument.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code>uk_eq_map <- uk_base + geom_point(data = eq[!is.na(eq$depth),], 
+                                  aes(x = long, y = lat, size = ML2, colour = depth, alpha=ML2)) +
+  scale_color_viridis_c(option = <span class="code-quo">"inferno"</span>, name = <span class="code-quo">"Depth (km)"</span>, 
+                        guide = guide_colourbar(reverse = <span class="code-log">TRUE</span><span class="bold">, order = <span class="code-num">2</span>)</span>)) +
+  scale_size_manual(values = c(<span class="code-num">1</span>,<span class="code-num">2.25</span>,<span class="code-num">3.5</span>,<span class="code-num">4.75</span>,<span class="code-num">6</span>), name = <span class="code-quo">"Magnitude (ML)"</span><span class="bold">,
+                    guide = guide_legend(order = <span class="code-num">1</span>)</span>) +
+  scale_alpha_manual(values = c(<span class="code-num">.3</span>, <span class="code-num">.45</span>, <span class="code-num">.6</span>, <span class="code-num">.75</span>, <span class="code-num">.9</span>)<span class="bold">, guide = "none"</span>) <span class="bold">+
+  theme(legend.title = element_text(size = <span class="code-num">10</span>))</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="img/01-uk-map/p12.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p12t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>At this point, the map is near to be finished. The only missing element is the region labels. Any text can be added to ggplot via <code class="white">geom_text</code> or <code class="white">geom_label</code>. These functions position the centre of the required textbox based on the x and y coordinates, where geom_text uses a transparent textbox and geom_label uses a filled textbox. There is also a third option that can be added by installing <code class="white">shadowtext</code> package. Shadowtext appears more visible on a colourful background (such as a map) without covering too much information as geom_label. The region labels are taken from the <code class="white">nuts_name_w</code> variable and their position is given by the polygon centroid coordinates <code class="white">c_lat</code> and <code class="white">c_long</code>.</p>
+<!------------- CODE ----------------------------->
+                    <pre class="white">
+<code><span class="bold"><code class="code-log">library</code>(shadowtext)</span>
+
+uk_eq_map <- uk_base + geom_point(data = eq[!is.na(eq$depth),], 
+                                  aes(x = long, y = lat, size = ML2, colour = depth, alpha=ML2)) +
+  scale_color_viridis_c(option = <span class="code-quo">"inferno"</span>, name = <span class="code-quo">"Depth (km)"</span>, 
+                        guide = guide_colourbar(reverse = <span class="code-log">TRUE</span>, order = <span class="code-num">2</span>))) +
+  scale_size_manual(values = c(<span class="code-num">1</span>,<span class="code-num">2.25</span>,<span class="code-num">3.5</span>,<span class="code-num">4.75</span>,<span class="code-num">6</span>), name = <span class="code-quo">"Magnitude (ML)"</span>,
+                    guide = guide_legend(order = <span class="code-num">1</span>)) +
+  scale_alpha_manual(values = c(<span class="code-num">.3</span>, <span class="code-num">.45</span>, <span class="code-num">.6</span>, <span class="code-num">.75</span>, <span class="code-num">.9</span>), guide = "none") +
+  theme(legend.title = element_text(size = <span class="code-num">10</span>)) <span class="bold">+
+  geom_shadowtext(data = ukmap, aes(x = c_long, y = c_lat, label=nuts_name_w),
+                  size=<span class="code-num">2</span>, colour=<span class="code-quo">"white"</span>, fontface=<span class="code-quo">"bold"</span>)</span></code></pre>
+<!-- end of CODE -->
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <div class="probootstrap-image" style="background-image: url()"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                
+                
+                </div>
+            </div>
+        </section> 
+    </section>
+
+
+
+
+
+
+
+ <!--------------------------------------------- PART 4 ---------------------------------------------->
+    <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse probootstrap-oversec probootstrap-animate" data-animate-effect="fade-In">
+        <section id="STEP4" class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <a href="img/01-uk-map/p12.png" class="probootstrap-image" style="background-image: url(img/01-uk-map/p12t.png)"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h1>STEP 4. Results</h1><hr>
+                    <p>The final map displays the distribution of the earthquakes over the UK territory. The size and the transparency of the points indicate the magnitude of the earthquakes, where the bigger and more opaque points represent higher magnitude earthquakes. The colour signalizes their depth. The darker the point is, the shallower is the earthquake. The colour scheme is chosen to identify more dangerous earthquakes, as the shallow ones can be more damaging due to their short distance to the surface.<br>
+                    When looking at the seismicity regionally, a clear pattern can be noticed in several areas. One such example is Scotland, where most of the earthquakes are clustered on the western coast. Three of those earthquakes are above the magnitude 5ML, out of which two closely located shallower earthquakes with a depth between 5km and 15km and one deeper earthquake above 20km. Most of the smaller earthquakes in Scotland have low depth.<br>
+                    Another area with several earthquakes is a region covering North West England, West Midlands, a part of East Midlands and also northern and southern coasts of Wales. Majority of the bigger earthquakes with magnitude above 5ML are located in Wales and a few in West Midlands. All those earthquakes are more than 10km deep, three of which are more than 25km deeply in the earth crust. Smaller magnitude earthquakes from this area are generally shallow, less than 10km under the ground.<br>
+                    Clusters covering smaller areas include the south-west coast of South West England, the east coast of South East England and two clusters located in the North Sea. The offshore area also registered the largest earthquake ever recorded in the UK territory with magnitude 6.1ML and depth 23km.<br>
+                    All remaining regions show zero to low seismicity.</p>
+                </div>
+            </div>
+        </section>
+        <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <div class="probootstrap-image hidden-xs" style="background-image"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p>The created earthquake map displays the seismicity in terms of magnitude and depth but doesn't show earthquakes with missing depth data. More improvements to the basic map and different views will be presented in the second part of this article.</p>
+                    <!-- <p><a href="uk-map-2.html" class="btn btn-primary">Continue to PART 2</a></p>-->
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+
+
+
+    <!-- END section -->
+</div>
+  <!-- END main -->
+      
+
+      
+      
+<!-- ------------------------------ comments section  ----------------------------- -->
+
+
+      
+ <!------------------------------------ START: footer --------------------------------------->          
+  <footer class="probootstrap-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>&copy; 2020 <a>martinamokosova</a> &amp; <a href="https://uicookies.com" target="_blank">uiCookies</a>. All Rights Reserved.<br>Title photo by <a href="https://unsplash.com/@drewmark" target="_blank">Andrew Stutesman</a>.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+ <!-- END footer -->
+
+  
+ <!----------------------------------------- END ------------------------------------------->  
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>  
+
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/custom.js"></script>
+
+  </body>
+</html>

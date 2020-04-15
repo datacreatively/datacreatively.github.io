@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>martinamokosova | projects | dvs challenge</title>
+    <meta name="description" content="Data . . . creatively">
+    <meta name="keywords" content="projects about data and visualisation">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Kaushan+Script|Mrs+Sheppards|Damion|Source+Code+Pro:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/vendor/icomoon.css">
+      
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149158680-1"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          
+          gtag('config', 'UA-149158680-1');
+      </script> 
+      
+  </head>
+
+
+  <!------------------------------------ START: header --------------------------------------->  
+  <body>
+  <div class="probootstrap-loader"></div>
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+        <a href="index.html" class="probootstrap-logo-black">martinamokosova</a>
+        <a href="#" class="probootstrap-burger-menu-black visible-xs"><i>Menu</i></a>
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="active"><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="links.html">Links</a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu-black"><i>Menu</i></a>
+            <ul class="probootstrap-mobile-menu-active text-right probootstrap-social">
+              <li><a href="https://www.facebook.com/martina.mokosova" target="_blank"><i class="icon-facebook2"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/martina-mokosova/" target="_blank"><i class="icon-linkedin"></i></a></li>
+              <li><a href="https://github.com/martinamokosova" target="_blank"><i class="icon-github2"></i></a></li>
+          </ul>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+
+  <!------------------------------------ START: main --------------------------------------->
+  <div class="probootstrap-main" style="margin-bottom: 30px">
+    <section class="probootstrap-section-full probootstrap-no-hover">
+        <div class="probootstrap-image" style="background-image: url(img/general/christin-noelle-nliVQL_peq4.jpg)">
+            <div class="box1">
+                <h1 class="probootstrap-header-article">Challenge with Data<span>&#160;</span>Visualisation<span>&#160;</span>Society</h1></div>
+            <div class="box2">
+                <p class="posted-on">March 2020</p></div>
+        </div>
+    </section>
+  </div>
+
+<!---------------------------------- INTRO ---------------------------------->
+
+<div class="probootstrap-main">
+    <section class="probootstrap-section probootstrap-animate">
+        <div class="container">
+            <h1 style="text-align: center">Purpose of the project</h1><hr>
+            <p><a href="https://www.datavisualizationsociety.com/" target="_blank">Data Visualisation Society</a>, a community that connects people interested in data visualisation, launched a challenge as a celebration of its first year of existence.</p>
+            <p>Members had to get creative and visualise the progression of new joiners over the first year in any form and with tools of their preference.</p>
+        </div>
+    </section>
+    <section class="probootstrap-section probootstrap-animate">
+        <div class="container">
+            <h1 style="text-align: center">The result</h1><hr>
+            <p>By looking at the available data, which included <i>longitude</i>, <i>latitude</i>, members expertise level in <i>data</i>, <i>visualisation</i> and <i>society</i>, and the <i>date of joining</i>, a few possibilities were coming to my mind. As I couldn't decide on a single graph, I connected multiple graphs in the final visualisation.<br></p>
+            <p>Geo-coordinates offer the opportunity to visualise the data as a map. From the map, it's obvious that there are members from all over the world. However, by adding the time dimension via <code>gganimate</code>, it becomes available to spot a pattern. Most members are clustered in two areas: North America and West Europe.</p>
+            <p>A timeline with the growth of the member community is displayed under the map and its progress is also animated.</p>
+            <p>The visualisation also displays an average value of expertise in the three main areas and shows progress over time.</p>
+            <p>The last part is a Venn Diagram of skillsets that were ranked the highest by members. The overlapping sections mean that members gave the same high ranking to two or all three skillsets.<br></p>
+            <p>The creation the individual visualisations will be described in separate posts.</p>
+            <img src="img/03-dvs-challenge/dvs_challenge.gif">
+<!--            <p></p>
+            <p>The steps in this article include:</p>
+            <ol>
+                <li><a href="#STEP1" class="js-next">Merging english regions into England</a></li>
+                <li><a href="#STEP2" class="js-next">Adding the time factor</a></li>
+                <li><a href="#STEP3" class="js-next">Displayng additional values</a></li>
+                <li><a href="#STEP4" class="js-next">Animation over time</a></li>
+            </ol> -->
+        </div>
+    </section>
+
+    
+<!--------------------------------------------- PART 1 ---------------------------------------------->
+ 
+    <!--
+    <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-oversec probootstrap-animate" data-animate-effect="fade-In">
+        <section id="STEP1" class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="" class="probootstrap-image" style="background-image: url()"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h1 style="text-align: center">STEP 1. Dissolving polygons</h1><hr>
+
+                </div>
+            </div>
+        </section>
+    </section>
+
+    
+    
+ <!--------------------------------------------- PART 2 ---------------------------------------------->
+    <!--
+    <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse probootstrap-oversec probootstrap-animate" data-animate-effect="fade-In">
+        <section id="STEP2" class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <a class="probootstrap-image"><img class="probootstrap-animate" data-animate-effect="fadeIn" src=""></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h1>STEP 2. Adding time factor to the plot</h1><hr>
+                    <p>Introduction</p>
+
+<!------------ CODE ----------------------------->
+    <!--
+                <pre>
+<code>placeholder</code></pre>
+<!-- end of CODE -->
+    <!--
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+ <!--------------------------------------------- PART 3 ---------------------------------------------->
+<!--    
+    <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-oversec probootstrap-animate" data-animate-effect="fade-In">
+        <section id="STEP3" class="probootstrap-section-23 probootstrap-no-hover">
+            <div class="probootstrap-image" style="background-image: url()"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h1>STEP 3. Adding other data on the map</h1><hr>
+                    <h3></h3>
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <a href="" class="probootstrap-image" style="background-image: url()"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <p></p>
+<!------------- CODE ----------------------------->
+    <!--
+                    <pre class="white">
+<code>placeholder</code></pre>
+<!-- end of CODE -->
+<!--
+                </div>
+            </div>
+        </section>  
+        <section class="probootstrap-section-23 probootstrap-no-hover">
+            <div class="probootstrap-image" style="background-image: url()"></div>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                
+                
+                </div>
+            </div>
+        </section> 
+    </section>
+
+
+
+
+
+
+
+ <!--------------------------------------------- PART 4 ---------------------------------------------->
+    <!--
+    <section class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse probootstrap-oversec probootstrap-animate" data-animate-effect="fade-In">
+        <section id="STEP4" class="probootstrap-section-23 probootstrap-no-hover probootstrap-reverse">
+            <a href="" class="probootstrap-image" style="background-image: url()"></a>
+            <div class="probootstrap-text">
+                <div class="probootstrap-inner">
+                    <h1>STEP 4. Making an animation with gganimate</h1><hr>
+                    <p></p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+
+
+
+    <!-- END section -->
+</div>
+  <!-- END main -->
+      
+
+      
+      
+<!-- ------------------------------ comments section  ----------------------------- -->
+
+
+      
+ <!------------------------------------ START: footer --------------------------------------->          
+  <footer class="probootstrap-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>&copy; 2020 <a>martinamokosova</a> &amp; <a href="https://uicookies.com" target="_blank">uiCookies</a>. All Rights Reserved.<br>Title photo by <a href="https://unsplash.com/photos/nliVQL_peq4" target="_blank">Christin Noelle</a>.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+ <!-- END footer -->
+
+  
+ <!----------------------------------------- END ------------------------------------------->  
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>  
+
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/custom.js"></script>
+
+  </body>
+</html>

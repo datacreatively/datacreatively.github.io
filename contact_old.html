@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>martinamokosova | contact</title>
+    <meta name="description" content="Data . . . creatively">
+    <meta name="keywords" content="projects about data and visualisation">
+  
+    <script src="openpgp.min.js" type="text/javascript"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Kaushan+Script|Mrs+Sheppards|Damion|Ovo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/vendor/icomoon.css">
+  </head>
+
+
+  <!------------------------------------ START: body --------------------------------------->  
+  <body>
+      
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+	if (window.crypto && window.crypto.getRandomValues) {
+		// form ready
+		var message = document.getElementById("message");
+		// encrypt on submit
+    console.log(document.forms);
+		document.forms[0].addEventListener("submit", function(evt) {
+			evt.preventDefault();
+			if (form.elements['message'].value == '') {
+				alert('Please enter a message!');
+			} else {
+				encrypt(message.value).then(function(encrypted_msg) {
+					form.elements['message'].value = encrypted_msg;
+					form.submit();
+				});
+				return true;
+			}
+		});
+	} else {
+		// not ready
+		document.getElementById("button").disabled = true;
+		window.alert("Error: Browser not supported\nReason: We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method)\nSolution: Use Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 or IE >= 11.");
+		return false;
+	}
+});
+function encrypt(msg) {
+	if (msg.indexOf("-----BEGIN PGP MESSAGE-----") !== -1 && msg.indexOf("-----END PGP MESSAGE-----") !== -1) {
+		return msg;
+	} else {
+		var key = document.getElementById("pubkey").innerHTML;
+		var publicKey = openpgp.key.readArmored(key).keys[0];
+		return openpgp.encryptMessage(publicKey, msg).then(function(pgpMessage) {
+			return pgpMessage;
+		});
+	}
+} 
+</script>
+
+  <!------------------------------------ START: header --------------------------------------->  
+
+  <div class="probootstrap-loader"></div>
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+        <a href="index.html" class="probootstrap-logo">martinamokosova</a>
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li class="active"><a href="contact.html">Contact</a></li>
+            <li><a href="links.html">Links</a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+            <ul class="probootstrap-mobile-menu-active text-right probootstrap-social">
+              <li><a href="https://www.facebook.com/martina.mokosova" target="_blank"><i class="icon-facebook2"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/martina-mokosova/" target="_blank"><i class="icon-linkedin"></i></a></li>
+              <li><a href="https://github.com/martinamokosova" target="_blank"><i class="icon-github2"></i></a></li>
+          </ul>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+
+
+  <!------------------------------------ START: main --------------------------------------->
+
+
+  <div class="probootstrap-main">
+
+   <section class="probootstrap-section-half">
+      <div class="probootstrap-image" style="background-image: url(img/general/annie-spratt-cZkFw06aX_8.jpg)"></div>
+      <div class="probootstrap-text">
+        <div class="probootstrap-inner probootstrap-animate">
+          <ul class="probootstrap-mobile-menu-active text-right probootstrap-social">
+              <li><a href="https://www.facebook.com/martina.mokosova" target="_blank"><i class="icon-facebook2"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/martina-mokosova/" target="_blank"><i class="icon-linkedin"></i></a></li>
+              <li><a href="https://github.com/martinamokosova" target="_blank"><i class="icon-github2"></i></a></li>
+          </ul>
+          <h1 class="heading">Contact Me</h1>
+          <p>If you have any helpful comments or questions regarding my work, you can contact me via social media (links above) or via the form below.</p>
+        </div>
+      <div class="probootstrap-form">
+          <form id="form" action="php/send_form.php" method="post" class="probootstrap-form probootstrap-form-box mb60">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fname">First Name</label>
+                  <input type="text" class="form-control" id="fname" name="fname">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lname">Last Name</label>
+                  <input type="text" class="form-control" id="lname" name="lname">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea cols="30" rows="20" class="form-control" id="message" name="message"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Send Message">
+            </div>
+          </form>
+        </div>
+       </div>
+    </section>
+    <!-- END section -->
+  </div>
+  <!-- END main -->
+  
+      
+  <!------------------------------------ START: footer --------------------------------------->
+  <footer class="probootstrap-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>&copy; 2017 <a href="https://uicookies.com/" target="_blank">uiCookies:Connect</a>. All Rights Reserved. <br> Designed &amp; Developed by <a href="https://uicookies.com" target="_blank">uiCookies</a>. Title photo by <a href="https://unsplash.com/@anniespratt" target="_blank">Annie Spratt</a>.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END footer -->
+
+  
+  <!----------------------------------------- END ------------------------------------------->
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/custom.js"></script>
+      
+  <div id="pubkey" hidden="true">
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: Keybase OpenPGP v1.0.0
+Comment: https://keybase.io/crypto
+
+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
+=ZH2g
+-----END PGP PUBLIC KEY BLOCK-----
+</div>
+
+      
+  </body>
+</html>

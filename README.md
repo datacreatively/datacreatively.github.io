@@ -2,7 +2,7 @@
 
 <br>
 
-**[martinamokosova.github.io](https://martinamokosova.github.io)** is a personal website to publish **data analytics** and **data visualisation** projects I have worked on.
+**[datacreatively.github.io](https://datacreatively.github.io)** is a personal website to publish **data analytics** and **data visualisation** projects I have worked on.
 
 HTML and CSS templates are from [uiCookies](https://uicookies.com/), images from [Unsplash](https://unsplash.com/) and adapted by myself.
 

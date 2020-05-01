@@ -19,4 +19,4 @@ If someone knows how to do that I would be grateful for any help or advice.
 
 I hope you can find the published projects helpful for your needs and if you have questions / feedback, please don't hesitate to contact me.
 
-![](https://github.com/martinamokosova/martinamokosova.github.io/blob/master/img/website.PNG)
+![](https://github.com/datacreatively/datacreatively.github.io/example.jpg)
